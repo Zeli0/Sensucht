@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SensuchtV3</string>
+    <string name="title_home">Recipe</string>
+    <string name="title_dashboard">Kitchen</string>
+    <string name="title_notifications">History</string>
+    <string name="potato">Potato</string>
+    <string name="toast">Toast</string>
+    <string name="milk">Milk</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="skillet">Skillet</string>
+    <string name="oven">Oven</string>
+</resources>
