@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/activity_main.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/activity_test.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/diet_layout.xml" value="0.5" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_add_ingredient.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_dashboard.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_home.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_ingredients.xml" value="0.268" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_kitch_restrict.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_kitchen.xml" value="0.268" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_notifications.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_test_layout.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/fragment_tools_input.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/placeholder_layout.xml" value="0.234375" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/test_layout.xml" value="0.234375" />
+        <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/menu/bottom_nav_menu.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/elija/IdeaProjects/SensuchtV3/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/elija/IdeaProjects/SensuchtV3/app/src/main/res/layout/fragment_dashboard.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/elija/IdeaProjects/SensuchtV3/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />

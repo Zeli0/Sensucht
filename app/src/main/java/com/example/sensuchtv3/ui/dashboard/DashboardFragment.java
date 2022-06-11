@@ -4,15 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.sensuchtv3.R;
 import com.example.sensuchtv3.databinding.FragmentDashboardBinding;
 import com.example.sensuchtv3.ui.IngredientsViewModel;
 

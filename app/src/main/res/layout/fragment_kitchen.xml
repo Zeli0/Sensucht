@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".ui.kitchen.KitchenFragment"
+                                                   android:id="@+id/frameLayout">
+    <Button
+            android:text="Ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/ingButt"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.658"
+            android:layout_marginStart="60dp"
+            app:layout_constraintBottom_toTopOf="@+id/dietButt"/>
+    <Button
+            android:text="Tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/toolsButt"
+            app:layout_constraintBottom_toBottomOf="@+id/ingButt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="1.0" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/ingButt" app:layout_constraintHorizontal_bias="0.535"/>
+    <Button
+            android:text="Dietary Restrictions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/dietButt"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.441"/>
+    <TextView
+            android:text="What's in Your Kitchen?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.401"
+            app:layout_constraintBottom_toTopOf="@+id/ingButt"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

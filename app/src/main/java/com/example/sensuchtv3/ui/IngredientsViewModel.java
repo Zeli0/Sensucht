@@ -3,13 +3,31 @@ package com.example.sensuchtv3.ui;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import com.example.sensuchtv3.Diet;
+import com.example.sensuchtv3.Ingredient;
+import com.example.sensuchtv3.Tool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientsViewModel extends ViewModel {
+    private MutableLiveData<ArrayList<Ingredient>> leftovers;
+    private MutableLiveData<ArrayList<Tool>> tools;
+    private MutableLiveData<List<Diet>> diet;
 
     private MutableLiveData<String> mText, morbussy;
     private MutableLiveData<Boolean> hasPotato, hasMilk, hasToast, hasSkillet, hasOven;
 
+
     public IngredientsViewModel() {
+        leftovers = new MutableLiveData<>();
+        leftovers.setValue(Ingredient.createIngredientList());
+        tools = new MutableLiveData<>();
+        tools.setValue(Tool.createRestrictionList());
+        diet = new MutableLiveData<>();
+        diet.setValue(Diet.getHabits());
+
+        //Below is all testing
         hasPotato = new MutableLiveData<>();
         hasPotato.setValue(false);
         hasMilk = new MutableLiveData<>();
@@ -26,6 +44,46 @@ public class IngredientsViewModel extends ViewModel {
         morbussy.setValue("It's morbin' time");
     }
 
+
+    public void addIngredient(Ingredient newIng) {
+        ArrayList<Ingredient> temp =  leftovers.getValue();
+        if (temp.get(0) == Ingredient.EMPTY) {
+            temp.remove(Ingredient.EMPTY);
+        }
+        temp.add(newIng);
+        leftovers.setValue(temp);
+    }
+
+    public void toggleDiet(int pos) {
+        List<Diet> temp = diet.getValue();
+        temp.get(pos).flipToggle();
+        diet.setValue(temp);
+    }
+
+    public void addRestriction(Tool newRestrict, int type) {
+        ArrayList<Tool> temp;
+        MutableLiveData<ArrayList<Tool>> source;
+        temp = tools.getValue();
+        if (temp.get(0) == Tool.EMPTY) {
+            temp.remove(Tool.EMPTY);
+        }
+        temp.add(newRestrict);
+        tools.setValue(temp);
+    }
+
+    public LiveData<ArrayList<Ingredient>> getIngredients() {
+        return leftovers;
+    }
+
+    public LiveData<List<Diet>> getDiet() {
+        return diet;
+    }
+
+    public LiveData<ArrayList<Tool>> getTools() {
+        return tools;
+    }
+
+    //Below is also all for testing purposes, will clean up in the future
     public LiveData<Boolean> canScallop() {
         MutableLiveData<Boolean> temp = new MutableLiveData<>();
         temp.setValue((hasPotato.getValue() || hasMilk.getValue()) && hasSkillet.getValue());

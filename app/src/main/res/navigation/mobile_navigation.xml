@@ -11,15 +11,42 @@
             android:label="@string/title_home"
             tools:layout="@layout/fragment_home"/>
 
+
     <fragment
             android:id="@+id/navigation_dashboard"
-            android:name="com.example.sensuchtv3.ui.dashboard.DashboardFragment"
+            android:name="com.example.sensuchtv3.ui.kitchen.KitchenFragment"
             android:label="@string/title_dashboard"
-            tools:layout="@layout/fragment_dashboard"/>
+            tools:layout="@layout/fragment_kitchen">
+        <action android:id="@+id/action_navigation_dashboard_to_ingredientsFragment"
+                app:destination="@id/ingredientsFragment"/>
+        <action android:id="@+id/action_navigation_dashboard_to_kitchRestrictFragment"
+                app:destination="@id/kitchRestrictFragment"/>
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_notifications"
             android:name="com.example.sensuchtv3.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications"/>
+    <fragment android:id="@+id/ingredientsFragment"
+              android:name="com.example.sensuchtv3.ui.ingredients.IngredientsFragment"
+              android:label="fragment_ingredients" tools:layout="@layout/fragment_ingredients_and_tools">
+        <action android:id="@+id/action_ingredientsFragment_to_addIngredient" app:destination="@id/addIngredient"/>
+        <action android:id="@+id/action_ingredientsFragment_to_toolsInput" app:destination="@id/toolsInput"/>
+        <argument android:name="itemType" app:argType="integer" android:defaultValue="0"/>
+    </fragment>
+    <fragment android:id="@+id/kitchRestrictFragment"
+              android:name="com.example.sensuchtv3.ui.restrictions.KitchRestrictFragment"
+              android:label="fragment_kitch_restrict" tools:layout="@layout/fragment_kitch_restrict">
+
+    </fragment>
+    <fragment android:id="@+id/addIngredient" android:name="com.example.sensuchtv3.AddIngredient"
+              android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient">
+        <action android:id="@+id/action_addIngredient_to_ingredientsFragment"
+                app:destination="@id/ingredientsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/toolsInput" android:name="com.example.sensuchtv3.ToolsInput"
+              android:label="fragment_tools_input" tools:layout="@layout/fragment_tools_input">
+        <action android:id="@+id/action_toolsInput_to_ingredientsFragment" app:destination="@id/ingredientsFragment"/>
+    </fragment>
 </navigation>
