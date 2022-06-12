@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.sensuchtv3.ui.IngredientsViewModel;
 
 import java.util.List;
 
@@ -22,9 +23,11 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder>{
         }
     }
     private List<Diet> habits;
+    private IngredientsViewModel infoStockade;
 
-    public DietAdapter(List<Diet> habits) {
+    public DietAdapter(List<Diet> habits, IngredientsViewModel infoStockade) {
         this.habits = habits;
+        this.infoStockade = infoStockade;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
@@ -47,13 +50,13 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder>{
     public void onBindViewHolder(DietAdapter.ViewHolder holder, int position) {
         // Get the data model based on position
         Diet fatso = habits.get(position);
-
+        int pos = position;
         // Set item views based on your views and data model
         Switch textView = holder.nameSwitch;
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().
+                infoStockade.toggleDiet(pos);
             }
         });
         String display = fatso.getName();

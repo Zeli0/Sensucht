@@ -81,7 +81,7 @@ public class KitchRestrictFragment extends Fragment {
         View root = binding.getRoot();
         RecyclerView rvRestrict = (RecyclerView) root.findViewById(R.id.rvRestrict);
         bondage = ingredientsViewModel.getDiet();
-        DietAdapter adapter = new DietAdapter(bondage.getValue());
+        DietAdapter adapter = new DietAdapter(bondage.getValue(), ingredientsViewModel);
         rvRestrict.setAdapter(adapter);
         rvRestrict.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
