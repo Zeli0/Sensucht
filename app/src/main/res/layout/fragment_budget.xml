@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".BudgetFragment" android:id="@+id/frameLayout5">
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/moneyDisplay"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" android:layout_marginTop="56dp"
+            app:layout_constraintHorizontal_bias="0.229" android:textSize="18sp"/>
+    <TextView
+            android:text="@string/budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="168dp" app:layout_constraintHorizontal_bias="0.229" android:textSize="24sp"/>
+    <TextView
+            android:text="Period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="168dp"
+            app:layout_constraintStart_toEndOf="@+id/textView8" android:textSize="24sp"/>
+    <Button
+            android:text="Edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/budgetEdit"
+            app:layout_constraintTop_toBottomOf="@+id/moneyDisplay"
+            android:layout_marginTop="80dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.198"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/timeFrame"
+            app:layout_constraintStart_toEndOf="@+id/moneyDisplay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.629" app:layout_constraintTop_toBottomOf="@+id/textView11"
+            android:layout_marginTop="56dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

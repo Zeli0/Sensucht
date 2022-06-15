@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import com.example.sensuchtv3.databinding.FragmentAddIngredientBinding;
-import com.example.sensuchtv3.databinding.FragmentDashboardBinding;
 import com.example.sensuchtv3.ui.IngredientsViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -75,10 +74,7 @@ public class AddIngredient extends Fragment {
                         new Ingredient(name.getText().toString(),
                                 parseInt(number.getText().toString()),
                                 quantifier.getText().toString()));
-                AddIngredientDirections.ActionAddIngredientToIngredientsFragment nav =
-                        AddIngredientDirections.actionAddIngredientToIngredientsFragment();
-                nav.setItemType(1);
-                Navigation.findNavController(view).navigate(nav);
+                Navigation.findNavController(view).popBackStack();
             }
         });
         return root;

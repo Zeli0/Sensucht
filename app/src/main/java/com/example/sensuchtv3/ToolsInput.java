@@ -79,10 +79,7 @@ public class ToolsInput extends Fragment {
             public void onClick(View view) {
                 ingredientsViewModel.addRestriction(new Tool(toolName.getText().toString(), Tool.TOOL),
                                                             Tool.TOOL);
-                ToolsInputDirections.ActionToolsInputToIngredientsFragment nav =
-                        ToolsInputDirections.actionToolsInputToIngredientsFragment();
-                nav.setItemType(2);
-                Navigation.findNavController(view).navigate(nav);
+                Navigation.findNavController(view).popBackStack();
             }
         });
         return root;

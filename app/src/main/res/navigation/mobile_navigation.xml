@@ -21,6 +21,7 @@
                 app:destination="@id/ingredientsFragment"/>
         <action android:id="@+id/action_navigation_dashboard_to_kitchRestrictFragment"
                 app:destination="@id/kitchRestrictFragment"/>
+        <action android:id="@+id/action_navigation_dashboard_to_budgetFragment" app:destination="@id/budgetFragment"/>
     </fragment>
 
     <fragment
@@ -49,4 +50,13 @@
               android:label="fragment_tools_input" tools:layout="@layout/fragment_tools_input">
         <action android:id="@+id/action_toolsInput_to_ingredientsFragment" app:destination="@id/ingredientsFragment"/>
     </fragment>
+    <fragment android:id="@+id/budgetFragment" android:name="com.example.sensuchtv3.BudgetFragment"
+              android:label="fragment_budget" tools:layout="@layout/fragment_budget">
+        <action android:id="@+id/action_budgetFragment_to_budgetInputListDialogFragment"
+                app:destination="@id/budgetInputDialogFragment"/>
+    </fragment>
+    <dialog android:id="@+id/budgetInputDialogFragment"
+            android:name="com.example.sensuchtv3.BudgetInputDialogFragment"
+            android:label="fragment_item_list_dialog"
+            tools:layout="@layout/fragment_item_list_dialog"/>
 </navigation>

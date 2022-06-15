@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import com.example.sensuchtv3.R;
-import com.example.sensuchtv3.databinding.FragmentDashboardBinding;
 import com.example.sensuchtv3.databinding.FragmentHomeBinding;
 import com.example.sensuchtv3.databinding.FragmentKitchenBinding;
 import com.example.sensuchtv3.ui.IngredientsViewModel;
@@ -74,6 +73,7 @@ public class KitchenFragment extends Fragment {
         final Button ingredients = binding.ingButt;
         final Button diet = binding.dietButt;
         final Button tools = binding.toolsButt;
+        final Button budget = binding.budgetButt;
         ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +88,14 @@ public class KitchenFragment extends Fragment {
             public void onClick(View view) {
                 NavDirections action
                         = KitchenFragmentDirections.actionNavigationDashboardToKitchRestrictFragment();
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
+        budget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action
+                        = KitchenFragmentDirections.actionNavigationDashboardToBudgetFragment();
                 Navigation.findNavController(view).navigate(action);
             }
         });

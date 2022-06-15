@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/editPage"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clipToPadding="false"
+              android:paddingBottom="@dimen/list_item_spacing_half"
+              android:paddingTop="@dimen/list_item_spacing_half"
+              tools:context=".BudgetInputDialogFragment">
+    <TextView
+            android:text="Change Budget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView6"
+            android:gravity="center" android:textSize="18sp"/>
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newMoney"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="SGD"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+            android:text="Change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/confirmButt"
+    />
+</LinearLayout>

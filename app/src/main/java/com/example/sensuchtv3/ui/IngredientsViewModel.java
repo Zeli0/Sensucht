@@ -3,6 +3,7 @@ package com.example.sensuchtv3.ui;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import com.example.sensuchtv3.Budget;
 import com.example.sensuchtv3.Diet;
 import com.example.sensuchtv3.Ingredient;
 import com.example.sensuchtv3.Tool;
@@ -14,9 +15,8 @@ public class IngredientsViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Ingredient>> leftovers;
     private MutableLiveData<ArrayList<Tool>> tools;
     private MutableLiveData<List<Diet>> diet;
+    private MutableLiveData<Budget> budget;
 
-    private MutableLiveData<String> mText, morbussy;
-    private MutableLiveData<Boolean> hasPotato, hasMilk, hasToast, hasSkillet, hasOven;
 
 
     public IngredientsViewModel() {
@@ -26,22 +26,8 @@ public class IngredientsViewModel extends ViewModel {
         tools.setValue(Tool.createRestrictionList());
         diet = new MutableLiveData<>();
         diet.setValue(Diet.getHabits());
-
-        //Below is all testing
-        hasPotato = new MutableLiveData<>();
-        hasPotato.setValue(false);
-        hasMilk = new MutableLiveData<>();
-        hasMilk.setValue(false);
-        hasToast = new MutableLiveData<>();
-        hasToast.setValue(false);
-        hasSkillet = new MutableLiveData<>();
-        hasSkillet.setValue(false);
-        hasOven = new MutableLiveData<>();
-        hasOven.setValue(false);
-        mText = new MutableLiveData<>();
-        mText.setValue("I could morb this all day");
-        morbussy = new MutableLiveData<>();
-        morbussy.setValue("It's morbin' time");
+        budget = new MutableLiveData<>();
+        budget.setValue(new Budget(0, 0));
     }
 
 
@@ -58,6 +44,18 @@ public class IngredientsViewModel extends ViewModel {
         List<Diet> temp = diet.getValue();
         temp.get(pos).flipToggle();
         diet.setValue(temp);
+    }
+
+    public void changeType(int newType) {
+        Budget temp = budget.getValue();
+        temp.setType(newType);
+        budget.setValue(temp);
+    }
+
+    public void changeMoney(int cashMoney) {
+        Budget temp = budget.getValue();
+        temp.setMoney(cashMoney);
+        budget.setValue(temp);
     }
 
     public void addRestriction(Tool newRestrict, int type) {
@@ -83,67 +81,8 @@ public class IngredientsViewModel extends ViewModel {
         return tools;
     }
 
-    //Below is also all for testing purposes, will clean up in the future
-    public LiveData<Boolean> canScallop() {
-        MutableLiveData<Boolean> temp = new MutableLiveData<>();
-        temp.setValue((hasPotato.getValue() || hasMilk.getValue()) && hasSkillet.getValue());
-        return temp;
+    public LiveData<Budget> getBudget() {
+        return budget;
     }
-    public LiveData<Boolean> canFrench() {
-        MutableLiveData<Boolean> temp = new MutableLiveData<>();
-        temp.setValue((hasToast.getValue() || hasMilk.getValue()) && hasSkillet.getValue() && hasOven.getValue());
-        return temp;
-    }
-
-    public LiveData<Boolean> hasPotato() {
-        System.out.println("sothony sadtano");
-        if (Boolean.TRUE.equals(hasPotato.getValue())) {
-            hasPotato.setValue(false);
-        } else {
-            hasPotato.setValue(true);
-        }
-        return hasPotato;
-    }
-
-    public LiveData<Boolean> hasToast() {
-        System.out.println("sothony sadtano");
-        if (Boolean.TRUE.equals(hasToast.getValue())) {
-            hasToast.setValue(false);
-        } else {
-            hasToast.setValue(true);
-        }
-        return hasToast;
-    }
-
-    public LiveData<Boolean> hasMilk() {
-        System.out.println("sothony sadtano");
-        if (Boolean.TRUE.equals(hasMilk.getValue())) {
-            hasMilk.setValue(false);
-        } else {
-            hasMilk.setValue(true);
-        }
-        return hasMilk;
-    }
-
-    public LiveData<Boolean> hasOven() {
-        System.out.println("sothony sadtano");
-        if (Boolean.TRUE.equals(hasOven.getValue())) {
-            hasOven.setValue(false);
-        } else {
-            hasOven.setValue(true);
-        }
-        return hasOven;
-    }
-
-    public LiveData<Boolean> hasSkillet() {
-        System.out.println("sothony sadtano");
-        if (Boolean.TRUE.equals(hasSkillet.getValue())) {
-            hasSkillet.setValue(false);
-        } else {
-            hasSkillet.setValue(true);
-        }
-        return hasSkillet;
-    }
-
 
 }

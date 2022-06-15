@@ -31,27 +31,6 @@ public class HomeFragment extends Fragment {
         final ImageView potat = binding.potatoPic;
         final ImageView toasty = binding.toastPic;
 
-        ingredientsViewModel.canScallop().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean s) {
-                if (s) {
-                    potat.setVisibility(View.VISIBLE);
-                } else {
-                    potat.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        ingredientsViewModel.canFrench().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean s) {
-                if (s) {
-                    toasty.setVisibility(View.VISIBLE);
-                } else {
-                    toasty.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
 
         return root;
     }

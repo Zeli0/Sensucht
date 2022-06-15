@@ -23,4 +23,13 @@
     <string name="quantifier">Quantifier:</string>
     <string name="grams_milliliters">(Grams, Milliliters...)</string>
     <string name="quantity">Quantity</string>
+    <string name="tools">Tools</string>
+    <string name="dietary_restrictions">Dietary Restrictions</string>
+    <string name="what_s_in_your_kitchen">What\'s in Your Kitchen?</string>
+    <string name="budget">Budget</string>
+    <string-array name="time_frames">
+        <item>Monthly</item>
+        <item>Daily</item>
+        <item>Per Meal</item>
+    </string-array>
 </resources>
