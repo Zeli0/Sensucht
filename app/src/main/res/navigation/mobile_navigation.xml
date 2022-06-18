@@ -26,9 +26,12 @@
 
     <fragment
             android:id="@+id/navigation_notifications"
-            android:name="com.example.sensuchtv3.ui.notifications.NotificationsFragment"
+            android:name="com.example.sensuchtv3.ui.profile.ProfileFragment"
             android:label="@string/title_notifications"
-            tools:layout="@layout/fragment_notifications"/>
+            tools:layout="@layout/fragment_profile">
+        <action android:id="@+id/action_navigation_notifications_to_homeLocationFragment"
+                app:destination="@id/homeLocationFragment"/>
+    </fragment>
     <fragment android:id="@+id/ingredientsFragment"
               android:name="com.example.sensuchtv3.ui.ingredients.IngredientsFragment"
               android:label="fragment_ingredients" tools:layout="@layout/fragment_ingredients_and_tools">
@@ -41,22 +44,24 @@
               android:label="fragment_kitch_restrict" tools:layout="@layout/fragment_kitch_restrict">
 
     </fragment>
-    <fragment android:id="@+id/addIngredient" android:name="com.example.sensuchtv3.AddIngredient"
+    <fragment android:id="@+id/addIngredient" android:name="com.example.sensuchtv3.kitchenLogic.ingredients.AddIngredient"
               android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient">
         <action android:id="@+id/action_addIngredient_to_ingredientsFragment"
                 app:destination="@id/ingredientsFragment"/>
     </fragment>
-    <fragment android:id="@+id/toolsInput" android:name="com.example.sensuchtv3.ToolsInput"
+    <fragment android:id="@+id/toolsInput" android:name="com.example.sensuchtv3.kitchenLogic.tools.ToolsInput"
               android:label="fragment_tools_input" tools:layout="@layout/fragment_tools_input">
         <action android:id="@+id/action_toolsInput_to_ingredientsFragment" app:destination="@id/ingredientsFragment"/>
     </fragment>
-    <fragment android:id="@+id/budgetFragment" android:name="com.example.sensuchtv3.BudgetFragment"
+    <fragment android:id="@+id/budgetFragment" android:name="com.example.sensuchtv3.ui.budget.BudgetFragment"
               android:label="fragment_budget" tools:layout="@layout/fragment_budget">
         <action android:id="@+id/action_budgetFragment_to_budgetInputListDialogFragment"
                 app:destination="@id/budgetInputDialogFragment"/>
     </fragment>
     <dialog android:id="@+id/budgetInputDialogFragment"
-            android:name="com.example.sensuchtv3.BudgetInputDialogFragment"
+            android:name="com.example.sensuchtv3.ui.budget.BudgetInputDialogFragment"
             android:label="fragment_item_list_dialog"
             tools:layout="@layout/fragment_item_list_dialog"/>
+    <fragment android:id="@+id/homeLocationFragment" android:name="com.example.sensuchtv3.HomeLocationFragment"
+              android:label="fragment_home_location" tools:layout="@layout/fragment_home_location"/>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.sensuchtv3.ui.notifications;
+package com.example.sensuchtv3.ui.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

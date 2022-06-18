@@ -1,4 +1,4 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.kitchenLogic;
 
 public class Budget {
     private int money;

@@ -1,4 +1,4 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.kitchenLogic.ingredients;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,29 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import com.example.sensuchtv3.databinding.FragmentToolsInputBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.databinding.FragmentAddIngredientBinding;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ToolsInput#newInstance} factory method to
+ * Use the {@link AddIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ToolsInput extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class AddIngredient extends Fragment {
     private IngredientsViewModel ingredientsViewModel;
-    private FragmentToolsInputBinding binding;
+    private FragmentAddIngredientBinding binding;
+    // TODO: Rename parameter arguments, choose names that match
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public ToolsInput() {
+    public AddIngredient() {
         // Required empty public constructor
     }
 
@@ -40,14 +36,12 @@ public class ToolsInput extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ToolsInput.
+     * @return A new instance of fragment AddIngredient.
      */
     // TODO: Rename and change types and number of parameters
-    public static ToolsInput newInstance(String param1, String param2) {
-        ToolsInput fragment = new ToolsInput();
+    public static AddIngredient newInstance(String param1, String param2) {
+        AddIngredient fragment = new AddIngredient();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +50,6 @@ public class ToolsInput extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -68,17 +60,19 @@ public class ToolsInput extends Fragment {
         ingredientsViewModel =
                 new ViewModelProvider(this.getActivity()).get(IngredientsViewModel.class);
 
-        binding = FragmentToolsInputBinding.inflate(inflater, container, false);
+        binding = FragmentAddIngredientBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextInputEditText toolName = binding.addToolInput;
-        Button toolButton = binding.addToolButt;
-
-        toolButton.setOnClickListener(new View.OnClickListener() {
+        final TextInputEditText name = binding.ingName;
+        final TextInputEditText number = binding.ingNumber;
+        final TextInputEditText quantifier = binding.ingQuant;
+        Button addIng = binding.addButt;
+        addIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingredientsViewModel.addRestriction(new Tool(toolName.getText().toString(), Tool.TOOL),
-                                                            Tool.TOOL);
+                ingredientsViewModel.addIngredient(
+                        new Ingredient(name.getText().toString(),
+                                parseInt(number.getText().toString()),
+                                quantifier.getText().toString()));
                 Navigation.findNavController(view).popBackStack();
             }
         });

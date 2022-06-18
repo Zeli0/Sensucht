@@ -1,4 +1,4 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.kitchenLogic.ingredients;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.sensuchtv3.R;
 
 import java.util.List;
 

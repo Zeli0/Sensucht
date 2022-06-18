@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import com.example.sensuchtv3.R;
-import com.example.sensuchtv3.databinding.FragmentHomeBinding;
 import com.example.sensuchtv3.databinding.FragmentKitchenBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

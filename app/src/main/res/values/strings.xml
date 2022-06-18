@@ -17,7 +17,6 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="quantifier">Quantifier:</string>
@@ -27,6 +26,7 @@
     <string name="dietary_restrictions">Dietary Restrictions</string>
     <string name="what_s_in_your_kitchen">What\'s in Your Kitchen?</string>
     <string name="budget">Budget</string>
+    <string name="reset_location">Reset Location</string>
     <string-array name="time_frames">
         <item>Monthly</item>
         <item>Daily</item>

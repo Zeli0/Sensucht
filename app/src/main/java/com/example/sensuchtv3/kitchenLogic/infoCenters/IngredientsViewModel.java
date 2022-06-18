@@ -1,12 +1,12 @@
-package com.example.sensuchtv3.ui;
+package com.example.sensuchtv3.kitchenLogic.infoCenters;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.sensuchtv3.Budget;
-import com.example.sensuchtv3.Diet;
-import com.example.sensuchtv3.Ingredient;
-import com.example.sensuchtv3.Tool;
+import com.example.sensuchtv3.kitchenLogic.Budget;
+import com.example.sensuchtv3.kitchenLogic.diet.Diet;
+import com.example.sensuchtv3.kitchenLogic.ingredients.Ingredient;
+import com.example.sensuchtv3.kitchenLogic.tools.Tool;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,7 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-                                                   tools:context=".BudgetFragment" android:id="@+id/frameLayout5">
+                                                   tools:context=".ui.budget.BudgetFragment" android:id="@+id/frameLayout5">
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"

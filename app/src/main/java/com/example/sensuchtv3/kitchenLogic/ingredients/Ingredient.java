@@ -1,4 +1,4 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.kitchenLogic.ingredients;
 
 import java.util.ArrayList;
 

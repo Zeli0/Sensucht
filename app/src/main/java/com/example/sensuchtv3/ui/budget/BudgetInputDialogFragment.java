@@ -1,17 +1,12 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.ui.budget;
 
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import com.example.sensuchtv3.databinding.FragmentBudgetBinding;
 import com.example.sensuchtv3.databinding.FragmentItemListDialogBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;

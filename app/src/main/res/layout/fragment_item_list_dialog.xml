@@ -9,7 +9,7 @@
               android:clipToPadding="false"
               android:paddingBottom="@dimen/list_item_spacing_half"
               android:paddingTop="@dimen/list_item_spacing_half"
-              tools:context=".BudgetInputDialogFragment">
+              tools:context=".ui.budget.BudgetInputDialogFragment">
     <TextView
             android:text="Change Budget"
             android:layout_width="match_parent"

@@ -1,13 +1,13 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.kitchenLogic.diet;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
-import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.R;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 
 import java.util.List;
 

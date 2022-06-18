@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.sensuchtv3.*;
 import com.example.sensuchtv3.databinding.FragmentKitchRestrictBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.kitchenLogic.diet.Diet;
+import com.example.sensuchtv3.kitchenLogic.diet.DietAdapter;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,8 +1,6 @@
-package com.example.sensuchtv3;
+package com.example.sensuchtv3.ui.budget;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,9 +9,9 @@ import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import com.example.sensuchtv3.R;
 import com.example.sensuchtv3.databinding.FragmentBudgetBinding;
-import com.example.sensuchtv3.databinding.FragmentItemListDialogBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

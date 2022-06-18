@@ -13,7 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.sensuchtv3.*;
 import com.example.sensuchtv3.databinding.FragmentIngredientsAndToolsBinding;
-import com.example.sensuchtv3.ui.IngredientsViewModel;
+import com.example.sensuchtv3.kitchenLogic.ingredients.Ingredient;
+import com.example.sensuchtv3.kitchenLogic.ingredients.IngredientAdapter;
+import com.example.sensuchtv3.kitchenLogic.tools.Tool;
+import com.example.sensuchtv3.kitchenLogic.tools.ToolAdapter;
+import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

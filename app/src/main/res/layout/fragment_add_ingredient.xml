@@ -4,7 +4,7 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-                                                   tools:context=".AddIngredient" android:id="@+id/frameLayout3">
+                                                   tools:context=".kitchenLogic.ingredients.AddIngredient" android:id="@+id/frameLayout3">
     <TextView
             android:text="@string/quantifier"
             android:layout_width="wrap_content"
