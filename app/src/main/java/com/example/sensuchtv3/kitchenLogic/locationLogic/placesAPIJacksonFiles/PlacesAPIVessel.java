@@ -30,7 +30,6 @@ public class PlacesAPIVessel {
             Location temp = r.getGeometry().getLocation();
             LatLng tempCorrectForm = new LatLng(temp.getLat(), temp.getLng());
             if (name.contains("fairprice")) {
-
                 marts.add(new Fairprice(tempCorrectForm));
                 ntuc++;
             } else if (name.contains("cold storage")) {

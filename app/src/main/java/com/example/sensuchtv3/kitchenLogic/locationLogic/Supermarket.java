@@ -3,6 +3,8 @@ package com.example.sensuchtv3.kitchenLogic.locationLogic;
 import android.location.Location;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.concurrent.CompletableFuture;
+
 public class Supermarket {
     private LatLng martLocation;
     private double distance;
@@ -19,7 +21,7 @@ public class Supermarket {
         this.distance = distance;
     }
 
-    public int[] scrape() {
+    public CompletableFuture<Double> scrape(String[] ingredients) {
         return null;
     }
 }

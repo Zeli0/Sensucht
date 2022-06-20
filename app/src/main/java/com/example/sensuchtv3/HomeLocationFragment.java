@@ -199,7 +199,6 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                                         }
                                     }
                                 }
-                                System.out.println("Gunna likes cumming");
                                 System.out.println(userLocation);
                             }
                         }
