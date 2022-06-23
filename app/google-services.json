@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "717370517389",
+    "project_id": "sensucht-data",
+    "storage_bucket": "sensucht-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717370517389:android:ca218a5f62fd77ccf63fc4",
+        "android_client_info": {
+          "package_name": "com.example.sensuchtv3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717370517389-18hbl28fdjnui38tip1f26bvtgk7fs7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpvJsTG6bqwjPt1GyG4BewKdZMWgvAbuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717370517389-18hbl28fdjnui38tip1f26bvtgk7fs7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

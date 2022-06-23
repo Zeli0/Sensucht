@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MEDIA/Orbital Media/GitHub/Sensucht/app/src/main/res/layout/activity_login_page.xml" value="0.18802083333333333" />
+        <entry key="..\:/MEDIA/Orbital Media/GitHub/Sensucht/app/src/main/res/layout/activity_registration.xml" value="0.358695652173913" />
         <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/activity_main.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/activity_test.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/elija/Documents/NUS/Other Projects/Orbital/SensuchtV3/app/src/main/res/layout/diet_layout.xml" value="0.5" />
@@ -33,7 +35,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
