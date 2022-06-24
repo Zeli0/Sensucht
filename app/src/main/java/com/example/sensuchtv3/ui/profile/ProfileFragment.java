@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 ColdStorage temp = new ColdStorage(null);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    System.out.println(temp.scrape(new String[]{"Steak"}).join());
+                    //System.out.println(temp.scrape(new String[]{"Steak"}).join());
                 }
             }
         });
