@@ -48,6 +48,7 @@ public class ToolAdapter extends RecyclerView.Adapter<ToolAdapter.ViewHolder> {
         // Get the data model based on position
         Tool law = tools.get(position);
 
+
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
         String display;

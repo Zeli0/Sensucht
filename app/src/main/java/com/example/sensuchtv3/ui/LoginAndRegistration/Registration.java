@@ -98,7 +98,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(Registration.this, "Account has been registered", Toast.LENGTH_SHORT).show();
-
+                                                finish();
                                             }
                                             else{
                                                 Toast.makeText(Registration.this, "User registration has failed!", Toast.LENGTH_SHORT).show();
