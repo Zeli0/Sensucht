@@ -29,4 +29,6 @@ public class LocationViewModel extends ViewModel {
     public void setNearbyMartLocations(List<Location> locationArray){
         nearbyMartLocations.setValue(locationArray);
     }
+
+
 }

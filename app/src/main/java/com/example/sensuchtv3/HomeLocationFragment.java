@@ -293,12 +293,10 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                 // ...
                 String result = response.body().string();
                 PlacesAPIVessel chalice = mapper.readValue(result, PlacesAPIVessel.class);
-                System.out.println("21 21 21");
-                System.out.println(chalice.getResults()[0].getName());
             }
 
             public void onFailure(Call call, IOException e) {
-                fail("Failed to get Supermarkets for some fucken reason");
+                fail("Failed to get Supermarkets");
             }
         });
     }
