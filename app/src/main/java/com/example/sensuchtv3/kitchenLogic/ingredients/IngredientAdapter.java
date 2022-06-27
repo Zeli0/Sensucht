@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.sensuchtv3.R;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         //Any views that will be rendered per row
         public TextView nameTextView;
         public ViewHolder(View itemView) {
@@ -21,13 +22,21 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             super(itemView);
             //nameTextView = (TextView) itemView.findViewById(R.id.ingDisplay);
             nameTextView = (TextView) itemView.findViewById(R.id.restrictDisplay);
+            nameTextView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            removeItem(getAbsoluteAdapterPosition());
         }
     }
 
     private List<Ingredient> leftovers;
+    private MutableLiveData<Boolean> canDelete;
 
-    public IngredientAdapter(List<Ingredient> leftovers) {
+    public IngredientAdapter(List<Ingredient> leftovers, MutableLiveData<Boolean> canDelete) {
         this.leftovers = leftovers;
+        this.canDelete = canDelete;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
@@ -61,6 +70,19 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         }
 
         textView.setText(display);
+    }
+
+    public void removeItem(int pos) {
+        if (canDelete.getValue()) {
+            leftovers.remove(pos);
+            notifyItemRemoved(pos);
+            notifyItemRangeChanged(pos, leftovers.size());
+            if (leftovers.isEmpty()) {
+                leftovers.add(Ingredient.EMPTY);
+                notifyItemInserted(0);
+                notifyItemRangeChanged(0, leftovers.size());
+            }
+        }
     }
 
     // Returns the total count of items in the list

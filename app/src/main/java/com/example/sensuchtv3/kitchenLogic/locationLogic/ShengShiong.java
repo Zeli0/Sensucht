@@ -1,6 +1,7 @@
 package com.example.sensuchtv3.kitchenLogic.locationLogic;
 
 import android.location.Location;
+import com.example.sensuchtv3.kitchenLogic.ingredients.Ingredient;
 import com.google.android.gms.maps.model.LatLng;
 import okhttp3.HttpUrl;
 import org.jsoup.Jsoup;
@@ -16,12 +17,13 @@ public class ShengShiong extends Supermarket{
         super(martLocation);
     }
 
+    /*
     @Override
-    public CompletableFuture<Double> scrape(String[] ingredients) {
+    public CompletableFuture<Double> scrape(Ingredient[] ingredients) {
         CompletableFuture<Double> finalCost = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             finalCost = CompletableFuture.supplyAsync(() -> 0.0);
-            for (String ing : ingredients) {
+            for (Ingredient ing : ingredients) {
                 CompletableFuture<Double> doc = CompletableFuture.supplyAsync(() -> {
                             try {
                                 //This website does offer the ability to filter based on food groups
@@ -61,4 +63,5 @@ public class ShengShiong extends Supermarket{
 
         return finalCost;
     }
+     */
 }
