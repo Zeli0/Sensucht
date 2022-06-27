@@ -19,6 +19,9 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import com.example.sensuchtv3.databinding.FragmentProfileBinding;
 import com.example.sensuchtv3.kitchenLogic.locationLogic.ColdStorage;
+import com.example.sensuchtv3.kitchenLogic.locationLogic.Fairprice;
+import com.example.sensuchtv3.kitchenLogic.locationLogic.Giant;
+import com.example.sensuchtv3.kitchenLogic.locationLogic.ShengShiong;
 import com.example.sensuchtv3.ui.kitchen.KitchenFragmentDirections;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -58,10 +61,13 @@ public class ProfileFragment extends Fragment {
         historyButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ColdStorage temp = new ColdStorage(null);
+                /*//ColdStorage temp = new ColdStorage(null);
+                //ShengShiong temp = new ShengShiong(null);
+                //Fairprice temp = new Fairprice(null);
+                Giant temp = new Giant(null);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    //System.out.println(temp.scrape(new String[]{"Steak"}).join());
-                }
+                    System.out.println(temp.scrape(new String[]{"steak"}).join());
+                }*/
             }
         });
 

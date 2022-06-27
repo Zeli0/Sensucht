@@ -24,23 +24,21 @@ public class ShengShiong extends Supermarket{
             for (String ing : ingredients) {
                 CompletableFuture<Double> doc = CompletableFuture.supplyAsync(() -> {
                             try {
-                                HttpUrl.Builder builder = HttpUrl.parse("https://shengsiong.com.sg/" + ing)
-                                        .newBuilder();
                                 //This website does offer the ability to filter based on food groups
-                                return Jsoup.connect(builder.build().toString())
+                                return Jsoup.connect("https://shengsiong.com.sg/")
+                                        .maxBodySize(0)
                                         .get();
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 return null;
                             }
                         })
-                        .thenApplyAsync(theDoc -> theDoc.select("div.card-body"))
+                        .thenApplyAsync(theDoc ->  theDoc.select("div.card-body"))
                         //div.product-packSize for the size of the goods
                         .thenApplyAsync(goodies -> goodies.stream().map(good ->
                                         good.getElementsByClass("product-price"))
                                 .filter(x -> x.size() > 0)
                                 .map(price -> {
-                                    System.out.println(price.size());
                                     return price.get(0);
                                 })
                                 .filter(Objects::nonNull)

@@ -9,11 +9,11 @@ import java.util.Locale;
 
 public class PlacesAPIVessel {
     private Results[] results;
-    private int ntuc = 0,
-                    cs = 0,
-                    ss = 0,
-                    giant =0,
-                    ryan = 0;
+    private int ntuc = -1,
+                    cs = -1,
+                    ss = -1,
+                    giant = -1,
+                    ryan = -1;
 
     public Results[] getResults() {
         return results;
@@ -30,20 +30,40 @@ public class PlacesAPIVessel {
             Location temp = r.getGeometry().getLocation();
             LatLng tempCorrectForm = new LatLng(temp.getLat(), temp.getLng());
             if (name.contains("fairprice")) {
-                marts.add(new Fairprice(tempCorrectForm));
-                ntuc++;
+                if (ntuc == -1) {
+                    marts.add(new Fairprice(tempCorrectForm));
+                    ntuc = marts.size() - 1;
+                } else {
+                    marts.get(ntuc).addLocation(tempCorrectForm);
+                }
             } else if (name.contains("cold storage")) {
-                marts.add(new ColdStorage(tempCorrectForm));
-                cs++;
+                if (cs == -1) {
+                    marts.add(new ColdStorage(tempCorrectForm));
+                    cs = marts.size() - 1;
+                } else {
+                    marts.get(cs).addLocation(tempCorrectForm);
+                }
             } else if (name.contains("sheng shiong")) {
-                marts.add(new ShengShiong(tempCorrectForm));
-                ss++;
+                if (ss == -1) {
+                    marts.add(new ShengShiong(tempCorrectForm));
+                    ss = marts.size() - 1;
+                } else {
+                    marts.get(ss).addLocation(tempCorrectForm);
+                }
             } else if (name.contains("giant")) {
-                marts.add(new Giant(tempCorrectForm));
-                giant++;
+                if (giant == -1) {
+                    marts.add(new Giant(tempCorrectForm));
+                    giant = marts.size() - 1;
+                } else {
+                    marts.get(giant).addLocation(tempCorrectForm);
+                }
             } else if (name.contains("ryan's")) {
-                marts.add(new RyanMarket(tempCorrectForm));
-                ryan++;
+                if (ryan == -1) {
+                    marts.add(new RyanMarket(tempCorrectForm));
+                    ryan = marts.size() - 1;
+                } else {
+                    marts.get(ryan).addLocation(tempCorrectForm);
+                }
             }
         }
         return marts;

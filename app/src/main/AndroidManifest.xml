@@ -39,11 +39,11 @@
             android:name=".ui.LoginAndRegistration.Registration"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".kitchenLogic.RecipieAPI.RecipieDisplay"
-            android:exported="true"
+            android:exported="true"/>
+        <activity
+                android:name=".MainActivity"
+                android:exported="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
