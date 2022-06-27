@@ -26,6 +26,7 @@ import com.example.sensuchtv3.databinding.ActivityMainBinding;
 import com.example.sensuchtv3.databinding.FragmentHomeLocationBinding;
 import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 import com.example.sensuchtv3.kitchenLogic.infoCenters.LocationViewModel;
+import com.example.sensuchtv3.kitchenLogic.locationLogic.Supermarket;
 import com.example.sensuchtv3.kitchenLogic.locationLogic.placesAPIJacksonFiles.PlacesAPIVessel;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,6 +41,7 @@ import okhttp3.*;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -293,6 +295,8 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                 // ...
                 String result = response.body().string();
                 PlacesAPIVessel chalice = mapper.readValue(result, PlacesAPIVessel.class);
+                ArrayList<Supermarket> marts = chalice.filter();
+                locationViewModel.setNearbyMarts(marts);
             }
 
             public void onFailure(Call call, IOException e) {

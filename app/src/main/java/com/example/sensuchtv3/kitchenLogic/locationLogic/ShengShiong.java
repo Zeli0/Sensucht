@@ -1,6 +1,7 @@
 package com.example.sensuchtv3.kitchenLogic.locationLogic;
 
 import android.location.Location;
+import com.example.sensuchtv3.kitchenLogic.ingredients.Ingredient;
 import com.google.android.gms.maps.model.LatLng;
 import okhttp3.HttpUrl;
 import org.jsoup.Jsoup;
@@ -16,31 +17,30 @@ public class ShengShiong extends Supermarket{
         super(martLocation);
     }
 
+    /*
     @Override
-    public CompletableFuture<Double> scrape(String[] ingredients) {
+    public CompletableFuture<Double> scrape(Ingredient[] ingredients) {
         CompletableFuture<Double> finalCost = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             finalCost = CompletableFuture.supplyAsync(() -> 0.0);
-            for (String ing : ingredients) {
+            for (Ingredient ing : ingredients) {
                 CompletableFuture<Double> doc = CompletableFuture.supplyAsync(() -> {
                             try {
-                                HttpUrl.Builder builder = HttpUrl.parse("https://shengsiong.com.sg/" + ing)
-                                        .newBuilder();
                                 //This website does offer the ability to filter based on food groups
-                                return Jsoup.connect(builder.build().toString())
+                                return Jsoup.connect("https://shengsiong.com.sg/")
+                                        .maxBodySize(0)
                                         .get();
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 return null;
                             }
                         })
-                        .thenApplyAsync(theDoc -> theDoc.select("div.card-body"))
+                        .thenApplyAsync(theDoc ->  theDoc.select("div.card-body"))
                         //div.product-packSize for the size of the goods
                         .thenApplyAsync(goodies -> goodies.stream().map(good ->
                                         good.getElementsByClass("product-price"))
                                 .filter(x -> x.size() > 0)
                                 .map(price -> {
-                                    System.out.println(price.size());
                                     return price.get(0);
                                 })
                                 .filter(Objects::nonNull)
@@ -63,4 +63,5 @@ public class ShengShiong extends Supermarket{
 
         return finalCost;
     }
+     */
 }
