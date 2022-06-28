@@ -12,21 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IngredientsViewModel extends ViewModel {
-    //Call this class by writing the following:
-    /*
-    ingredientsViewModel =
-                new ViewModelProvider(this.getActivity()).get(IngredientsViewModel.class);
-    * */
-    //Create a new ingredientsviewmodel object first
-
-    //This contains all of the leftovers that the user still has
-        //The ingredients class contains all of the relevant information
-        //If you could put the ingredients needed in each recipe into Ingredient objects that would help a lot for the scraping process
+    //These store the leftover Ingredients
     private MutableLiveData<ArrayList<Ingredient>> leftovers;
     //This is all of the tools
     private MutableLiveData<ArrayList<Tool>> tools;
     //This is the diet portion(defining user diets)
-        //You can check the diet class for how i defined it; I matched the diets offered by spoonacular mostly
     private MutableLiveData<List<Diet>> diet;
     //This is the budget that the user has
     private MutableLiveData<Budget> budget;

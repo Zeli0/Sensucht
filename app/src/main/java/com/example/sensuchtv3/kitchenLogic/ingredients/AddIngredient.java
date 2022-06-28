@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.example.sensuchtv3.databinding.FragmentAddIngredientBinding;
 import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import static java.lang.Integer.parseInt;
@@ -69,11 +71,21 @@ public class AddIngredient extends Fragment {
         addIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingredientsViewModel.addIngredient(
-                        new Ingredient(name.getText().toString(),
-                                parseInt(number.getText().toString()),
-                                quantifier.getText().toString()));
-                Navigation.findNavController(view).popBackStack();
+                if (name.getText().length() == 0
+                        || number.getText().length() == 0
+                        || quantifier.getText().length() == 0) {
+                    Snackbar temp = Snackbar.make(root, "Please fill in all fields.", BaseTransientBottomBar.LENGTH_SHORT);
+                    temp.show();
+                } else if (!number.getText().toString().matches("-?(0|[1-9]\\d*)")) {
+                    Snackbar temp = Snackbar.make(root, "Incorrect input.", BaseTransientBottomBar.LENGTH_SHORT);
+                    temp.show();
+                } else {
+                    ingredientsViewModel.addIngredient(
+                            new Ingredient(name.getText().toString(),
+                                    parseInt(number.getText().toString()),
+                                    quantifier.getText().toString()));
+                    Navigation.findNavController(view).popBackStack();
+                }
             }
         });
         return root;

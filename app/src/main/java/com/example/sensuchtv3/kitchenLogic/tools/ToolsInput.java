@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.example.sensuchtv3.databinding.FragmentToolsInputBinding;
 import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
@@ -77,9 +79,14 @@ public class ToolsInput extends Fragment {
         toolButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingredientsViewModel.addRestriction(new Tool(toolName.getText().toString(), Tool.TOOL),
-                                                            Tool.TOOL);
-                Navigation.findNavController(view).popBackStack();
+                if (toolName.getText().length() == 0) {
+                    Snackbar temp = Snackbar.make(root, "Please fill in all fields.", BaseTransientBottomBar.LENGTH_SHORT);
+                    temp.show();
+                } else {
+                    ingredientsViewModel.addRestriction(new Tool(toolName.getText().toString(), Tool.TOOL),
+                            Tool.TOOL);
+                    Navigation.findNavController(view).popBackStack();
+                }
             }
         });
         return root;

@@ -45,14 +45,9 @@
 
     </fragment>
     <fragment android:id="@+id/addIngredient" android:name="com.example.sensuchtv3.kitchenLogic.ingredients.AddIngredient"
-              android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient">
-        <action android:id="@+id/action_addIngredient_to_ingredientsFragment"
-                app:destination="@id/ingredientsFragment"/>
-    </fragment>
+              android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient"/>
     <fragment android:id="@+id/toolsInput" android:name="com.example.sensuchtv3.kitchenLogic.tools.ToolsInput"
-              android:label="fragment_tools_input" tools:layout="@layout/fragment_tools_input">
-        <action android:id="@+id/action_toolsInput_to_ingredientsFragment" app:destination="@id/ingredientsFragment"/>
-    </fragment>
+              android:label="fragment_tools_input" tools:layout="@layout/fragment_tools_input"/>
     <fragment android:id="@+id/budgetFragment" android:name="com.example.sensuchtv3.ui.budget.BudgetFragment"
               android:label="fragment_budget" tools:layout="@layout/fragment_budget">
         <action android:id="@+id/action_budgetFragment_to_budgetInputListDialogFragment"
