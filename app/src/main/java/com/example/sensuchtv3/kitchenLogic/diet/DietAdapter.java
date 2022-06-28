@@ -54,6 +54,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder>{
         // Set item views based on your views and data model
         Switch textView = holder.nameSwitch;
         textView.setOnClickListener(new View.OnClickListener() {
+            //Changes the boolean value of diet value in the given position
             @Override
             public void onClick(View view) {
                 infoStockade.toggleDiet(pos);

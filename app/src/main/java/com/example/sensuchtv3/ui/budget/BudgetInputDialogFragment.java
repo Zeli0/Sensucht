@@ -11,6 +11,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
@@ -50,9 +52,14 @@ public class BudgetInputDialogFragment extends BottomSheetDialogFragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int temp = Integer.parseInt(money.getText().toString());
-                ingredientsViewModel.changeMoney(temp);
-                dismiss();
+                if (!money.getText().toString().matches("-?(0|[1-9]\\d*)")) {
+                    Snackbar temp = Snackbar.make(view, "Incorrect input.", BaseTransientBottomBar.LENGTH_SHORT);
+                    temp.show();
+                } else {
+                    int temp = Integer.parseInt(money.getText().toString());
+                    ingredientsViewModel.changeMoney(temp);
+                    dismiss();
+                }
             }
         });
         return root;

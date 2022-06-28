@@ -62,6 +62,7 @@ public class AddIngredient extends Fragment {
         ingredientsViewModel =
                 new ViewModelProvider(this.getActivity()).get(IngredientsViewModel.class);
 
+        //Gets the fragment, allows code to access the elements in the fragment
         binding = FragmentAddIngredientBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         final TextInputEditText name = binding.ingName;
@@ -71,11 +72,14 @@ public class AddIngredient extends Fragment {
         addIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Check if empty
                 if (name.getText().length() == 0
                         || number.getText().length() == 0
                         || quantifier.getText().length() == 0) {
+                    //Display an error message
                     Snackbar temp = Snackbar.make(root, "Please fill in all fields.", BaseTransientBottomBar.LENGTH_SHORT);
                     temp.show();
+                //Check if the number is actually a number
                 } else if (!number.getText().toString().matches("-?(0|[1-9]\\d*)")) {
                     Snackbar temp = Snackbar.make(root, "Incorrect input.", BaseTransientBottomBar.LENGTH_SHORT);
                     temp.show();
@@ -84,6 +88,7 @@ public class AddIngredient extends Fragment {
                             new Ingredient(name.getText().toString(),
                                     parseInt(number.getText().toString()),
                                     quantifier.getText().toString()));
+                    //Return to previous page
                     Navigation.findNavController(view).popBackStack();
                 }
             }

@@ -25,6 +25,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             nameTextView.setOnClickListener(this);
         }
 
+        //Sets the onClick method for each item
+        //getAbsoluteAdapterPosition() gets the position of the item in the list
         @Override
         public void onClick(View v) {
             removeItem(getAbsoluteAdapterPosition());
@@ -35,7 +37,9 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     private MutableLiveData<Boolean> canDelete;
 
     public IngredientAdapter(List<Ingredient> leftovers, MutableLiveData<Boolean> canDelete) {
+        //The list of data
         this.leftovers = leftovers;
+        //The status of the "delete mode" button
         this.canDelete = canDelete;
     }
 
@@ -68,7 +72,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         } else {
             display = beef.getNumber() + " " + beef.getQuantifier() + " " + beef.getName();
         }
-
         textView.setText(display);
     }
 

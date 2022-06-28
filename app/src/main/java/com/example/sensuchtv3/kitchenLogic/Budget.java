@@ -18,14 +18,15 @@ public class Budget {
         money = newMoney;
     }
 
-    public void setType(int newType) {
-        type = newType;
-    }
-
     public int getType() {
         return type;
     }
 
+    public void setType(int newType) {
+        type = newType;
+    }
+
+    //Gets the budget in the per-meal format
     public int getPrice() {
         int divider = 1;
         switch (type) {

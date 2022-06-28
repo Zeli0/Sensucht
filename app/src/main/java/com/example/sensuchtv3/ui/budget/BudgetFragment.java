@@ -66,6 +66,8 @@ public class BudgetFragment extends Fragment implements AdapterView.OnItemSelect
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        //The chosen time frame is indicated in the ingredientsviewmodel, where the budget is also stored
+            //the ingredientsviewmodel can then run correct calculations
         ingredientsViewModel.changeType(pos);
     }
 
@@ -91,9 +93,12 @@ public class BudgetFragment extends Fragment implements AdapterView.OnItemSelect
         });
         String temp = "$" + String.valueOf(ingredientsViewModel.getBudget().getValue().getMoney());
         budgetDisplay.setText(temp);
+
+        //editBudget is the edit button
         editBudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigation component moves the user to the next fragment, or the modalbottomfragment in this case
                 NavDirections nav = BudgetFragmentDirections.actionBudgetFragmentToBudgetInputListDialogFragment();
                 Navigation.findNavController(view).navigate(nav);
             }
