@@ -32,11 +32,11 @@ public class HomeFragment extends Fragment {
     private TextView textViewResult1;
     private TextView textViewResult2;
     private TextView textViewResult3;
-    private TextView offsetText;
+    private TextView inputOffset;
     private ImageView imageView1;
     private ImageView imageView2;
     private ImageView imageView3;
-    private int number = 0;
+    private int number = 3;
     private int offset = 0;
 
     private Handler mHandler = new Handler(Looper.getMainLooper());
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
         textViewResult1 = root.findViewById(R.id.title1);
         textViewResult2 = root.findViewById(R.id.title2);
         textViewResult3 = root.findViewById(R.id.title3);
+        inputOffset = root.findViewById(R.id.passOffset);
         imageView1 = root.findViewById(R.id.Rpic1);
         imageView2 = root.findViewById(R.id.Rpic2);
         imageView3 = root.findViewById(R.id.Rpic3);
@@ -67,12 +68,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 offset += 3;
-                searchRecipe("potato", 3, offset);
+                searchRecipe("potato", number, offset);
             }
         });
 
         return root;
-        
+
     }
 
     @Override
@@ -88,7 +89,7 @@ public class HomeFragment extends Fragment {
 
 
         Request request = new Request.Builder()
-                .url(url+ "&ingredients=" + ingredient + "&number=" + String.valueOf(number) + "&offset" + String.valueOf(offset))
+                .url(url+ "&ingredients=" + ingredient + "&number=" + String.valueOf(number) + "&offset=" + String.valueOf(offset))
                 .build();
 
         client.newCall(request).enqueue(new okhttp3.Callback() {
@@ -103,22 +104,31 @@ public class HomeFragment extends Fragment {
                     final String myResponse = response.body().string();
 
                     RecipieRequest data = gson.fromJson(myResponse, RecipieRequest.class);
-
-
-
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            textViewResult1.setText(data.getRecipes().get(0).getTitle());
-                            textViewResult2.setText(data.getRecipes().get(1).getTitle());
-                            textViewResult3.setText(data.getRecipes().get(2).getTitle());
-                            Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
-                            Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
-                            Glide.with(HomeFragment.this).load(data.getRecipes().get(2).getImageURL()).into(imageView3);
-
+                            inputOffset.setText(String.valueOf(offset/3));
                         }
                     });
+
+                    displayRecipe(data);
                 }
+            }
+        });
+    }
+
+    public void displayRecipe(RecipieRequest json){
+        RecipieRequest data = json;
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                textViewResult1.setText(data.getRecipes().get(0).getTitle());
+                textViewResult2.setText(data.getRecipes().get(1).getTitle());
+                textViewResult3.setText(data.getRecipes().get(2).getTitle());
+                Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
+                Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
+                Glide.with(HomeFragment.this).load(data.getRecipes().get(2).getImageURL()).into(imageView3);
+
             }
         });
     }

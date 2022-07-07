@@ -26,4 +26,8 @@ public class RecipieRequest {
     public int getTotalResults() {
         return totalResults;
     }
+
+    public int getOffset() {
+        return offset;
+    }
 }
