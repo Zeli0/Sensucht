@@ -22,6 +22,7 @@ import com.example.sensuchtv3.databinding.FragmentHomeBinding;
 import com.example.sensuchtv3.kitchenLogic.RecipieAPI.RecipieRequest;
 import com.example.sensuchtv3.kitchenLogic.infoCenters.IngredientsViewModel;
 import com.example.sensuchtv3.kitchenLogic.ingredients.Ingredient;
+import com.example.sensuchtv3.kitchenLogic.tools.Tool;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -42,7 +43,9 @@ public class HomeFragment extends Fragment {
     private int number = 3;
     private int offset = 0;
     private ArrayList<Ingredient> ingredients;
+    private ArrayList<Tool> tools;
     private String names = "";
+    private String toolName = "";
 
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
@@ -61,9 +64,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         ingredients = ingredientsViewModel.getIngredients().getValue();
-
-
-
+        tools = ingredientsViewModel.getTools().getValue();
 
         textViewResult1 = root.findViewById(R.id.title1);
         textViewResult2 = root.findViewById(R.id.title2);
@@ -85,7 +86,7 @@ public class HomeFragment extends Fragment {
                     toast.show();
                 }
                 else {
-                    searchRecipe(ingredients, number, offset);
+                    searchRecipe(ingredients, tools, offset);
                 }
             }
         });
@@ -98,7 +99,7 @@ public class HomeFragment extends Fragment {
                 }
                 else {
                     offset += 3;
-                    searchRecipe(ingredients, number, offset);
+                    searchRecipe(ingredients, tools, offset);
                 }
 
             }
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 if(offset>0){
                     offset -= 3;
-                    searchRecipe(ingredients, number, offset);
+                    searchRecipe(ingredients, tools, offset);
                 }
             }
         });
@@ -123,23 +124,28 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    public void searchRecipe(ArrayList<Ingredient> ingredient, int number, int offset){
+    public void searchRecipe(ArrayList<Ingredient> ingredient, ArrayList<Tool> tool, int offset){
         OkHttpClient client = new OkHttpClient();
         names = "";
+        toolName = "";
 
         for (int i=0; i<ingredient.size(); i++){
             if(i==0){names = names + ingredient.get(i).getName();}
             else{names = names + "," + ingredient.get(i).getName();}
-
         }
-
-
-
+        for (int i=0; i<tool.size(); i++){
+            if(i==0){toolName = toolName + tool.get(i).getName();}
+            else{toolName = toolName + "," + tool.get(i).getName();}
+        }
 
         String url = "https://api.spoonacular.com/recipes/complexSearch?apiKey=df736318d07c48819d4999729fa24e66";
 
         Request request = new Request.Builder()
-                .url(url+ "&includeIngredients=" + names + "&number=" + String.valueOf(number) + "&offset=" + String.valueOf(offset))
+                .url(url+ "&includeIngredients=" + names
+                        + "&number=3"
+                        + "&offset=" + String.valueOf(offset)
+                        + "&equipment=" + toolName
+                        + "&instructionsRequired=true")
                 .build();
 
         client.newCall(request).enqueue(new okhttp3.Callback() {
@@ -157,7 +163,7 @@ public class HomeFragment extends Fragment {
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            inputOffset.setText(names);
+                            inputOffset.setText(names + toolName);
                         }
                     });
                     displayRecipe(data);
@@ -171,12 +177,24 @@ public class HomeFragment extends Fragment {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                textViewResult1.setText(data.getRecipes().get(0).getTitle());
-                textViewResult2.setText(data.getRecipes().get(1).getTitle());
-                textViewResult3.setText(data.getRecipes().get(2).getTitle());
-                Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
-                Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
-                Glide.with(HomeFragment.this).load(data.getRecipes().get(2).getImageURL()).into(imageView3);
+                if(data.getTotalResults() - data.getOffset()==1) {
+                    textViewResult1.setText(data.getRecipes().get(0).getTitle());
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
+                }
+                else if(data.getTotalResults() - data.getOffset()==2){
+                    textViewResult1.setText(data.getRecipes().get(0).getTitle());
+                    textViewResult2.setText(data.getRecipes().get(1).getTitle());
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
+                }
+                else {
+                    textViewResult1.setText(data.getRecipes().get(0).getTitle());
+                    textViewResult2.setText(data.getRecipes().get(1).getTitle());
+                    textViewResult3.setText(data.getRecipes().get(2).getTitle());
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
+                    Glide.with(HomeFragment.this).load(data.getRecipes().get(2).getImageURL()).into(imageView3);
+                }
 
             }
         });
