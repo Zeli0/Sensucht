@@ -177,23 +177,29 @@ public class HomeFragment extends Fragment {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                if(data.getTotalResults() - data.getOffset()==1) {
+                if(data.getRecipes().size()==1){
                     textViewResult1.setText(data.getRecipes().get(0).getTitle());
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
                 }
-                else if(data.getTotalResults() - data.getOffset()==2){
+                else if(data.getRecipes().size()==2){
                     textViewResult1.setText(data.getRecipes().get(0).getTitle());
                     textViewResult2.setText(data.getRecipes().get(1).getTitle());
+                    textViewResult3.setText("");
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
+                    imageView3.setImageDrawable(null);
                 }
-                else {
+                else if(data.getRecipes().size()==3){
                     textViewResult1.setText(data.getRecipes().get(0).getTitle());
                     textViewResult2.setText(data.getRecipes().get(1).getTitle());
                     textViewResult3.setText(data.getRecipes().get(2).getTitle());
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(0).getImageURL()).into(imageView1);
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(1).getImageURL()).into(imageView2);
                     Glide.with(HomeFragment.this).load(data.getRecipes().get(2).getImageURL()).into(imageView3);
+                }
+                else{
+                    Toast toast= Toast.makeText(HomeFragment.super.getContext() ,"Last Results!", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
 
             }
