@@ -35,9 +35,11 @@ public class LocationViewModel extends ViewModel {
     }
 
     public CompletableFuture<Double> collectiveScrape(Ingredient[] ingredients) {
+        //nearbyMarts designates the list of supermarket brands that were found around the user
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return nearbyMarts.getValue()
                     .stream()
+                    //As mentioned, a single map function scrapes all of these different Supermarkets together
                     .map(mart -> mart.scrape(ingredients))
                     .reduce(CompletableFuture.supplyAsync(() -> Double.MAX_VALUE),
                             (x, y) -> x.thenCombineAsync(y, Math::min));
