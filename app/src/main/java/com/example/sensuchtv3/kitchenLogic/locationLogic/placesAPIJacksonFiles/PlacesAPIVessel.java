@@ -9,11 +9,6 @@ import java.util.Locale;
 
 public class PlacesAPIVessel {
     private Results[] results;
-    private int ntuc = -1,
-                    cs = -1,
-                    ss = -1,
-                    giant = -1,
-                    ryan = -1;
 
     public Results[] getResults() {
         return results;
@@ -22,6 +17,12 @@ public class PlacesAPIVessel {
     public void setResults(Results[] results) {
         this.results = results;
     }
+
+    private int ntuc = -1,
+            cs = -1,
+            ss = -1,
+            giant = -1,
+            ryan = -1;
 
     public ArrayList<Supermarket> filter() {
         ArrayList<Supermarket> marts = new ArrayList<>();

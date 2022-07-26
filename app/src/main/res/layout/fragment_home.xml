@@ -79,10 +79,10 @@
         android:id="@+id/SearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:text="Search"
-        app:layout_constraintStart_toStartOf="@+id/Rpic3"
-        app:layout_constraintTop_toBottomOf="@+id/Rpic3" />
+        app:layout_constraintStart_toEndOf="@+id/BackwardSearch"
+        app:layout_constraintTop_toTopOf="@+id/BackwardSearch" />
 
     <TextView
         android:id="@+id/OffsetVal"
@@ -90,16 +90,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Page:"
+        android:text="Parameters:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/passOffset"
-        android:layout_width="wrap_content"
+        android:id="@+id/ingNameDisplay"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/OffsetVal" />
+
+    <Button
+        android:id="@+id/BackwardSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rpic3" />
+
+    <Button
+        android:id="@+id/forwardSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Next"
+        app:layout_constraintStart_toEndOf="@+id/SearchButton"
+        app:layout_constraintTop_toTopOf="@+id/SearchButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

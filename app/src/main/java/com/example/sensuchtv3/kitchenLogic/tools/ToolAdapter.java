@@ -21,6 +21,7 @@ public class ToolAdapter extends RecyclerView.Adapter<ToolAdapter.ViewHolder> {
             // to access the context from any ViewHolder instance.
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.restrictDisplay);
+            itemView.setOnClickListener(this);
         }
         @Override
         public void onClick(View v) {

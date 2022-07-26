@@ -60,12 +60,14 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
     private OkHttpClient client = new OkHttpClient();
     private FragmentHomeLocationBinding binding;
     private MapView locationDisplay;
+
     private String BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/";
+
     private String API_KEY = "AIzaSyCvu_2DwED1fj8TuGCUM9Lz8_gDjw5QPtY";
 
     private boolean requestMade = false;
 
-
+    //Code for actually sending the permission request and storing its results
     private ActivityResultLauncher<String[]> locationPermissionRequest =
             registerForActivityResult(new ActivityResultContracts
                             .RequestMultiplePermissions(), result -> {
@@ -107,12 +109,16 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
         @SuppressLint("MissingPermission")
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            //These two are called when the map has been loaded and is ready
+            //mapReady boolean to designate that the map has been loaded
             mapReady = true;
+            //mapInsideTheView to store the map so that other functions can change how the map looks
             mapInsideTheView = googleMap;
-            System.out.println(userLocation);
             LatLng markerToPlace;
+            //Check if location has been obtained
             if (userLocation != null) {
                 markerToPlace = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
+                //Store it in the viewmodel
                 locationViewModel.setUserLocation(userLocation);
                 if (!requestMade) {
                     try {
@@ -141,24 +147,26 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
         locationViewModel = new ViewModelProvider(this.getActivity()).get(LocationViewModel.class);
         userLocation = null;
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
-        //If already obtained
+        //Checks if permission is already obtained
         if (ContextCompat.checkSelfPermission(
                 this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
             // You can use the API that requires the permission.
             if (ContextCompat.checkSelfPermission(this.getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                //Boolean value indicating that the location can be obtained
+                    //Mainly used because of timing issues between onCreate and onMapReady
                 canGetLocation = true;
             }
-        } else if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+        //Checks if the educational UI should be displayed
+        } else if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
             // In an educational UI, explain to the user why your app requires this
             // permission for a specific feature to behave as expected. In this UI,
             // include a "cancel" or "no thanks" button that allows the user to
             // continue using your app without granting the permission.
             System.out.println("will do later");
         } else {
-            // You can directly ask for the permission.
-            // The registered ActivityResultCallback gets the result of this request.
+            // Request for the permission
             locationPermissionRequest.launch(new String[] {
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
@@ -182,10 +190,12 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                         public void onSuccess(Location location) {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                // Logic to handle location object
+                                // Location of the user is stored into the viewmodel
                                 userLocation = location;
                                 locationViewModel.setUserLocation(userLocation);
+                                //Check if onMapReady has been called
                                 if (mapReady) {
+                                    //Just in case a marker was already added, clear it first
                                     mapInsideTheView.clear();
                                     LatLng theUser = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
                                     mapInsideTheView.addMarker(new MarkerOptions()
@@ -270,8 +280,7 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
 
     //Code handling requests to GoogleMapsAPI
     public void requestForNearbySupermarkets() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
 
         HttpUrl.Builder urlBuilder
                 = HttpUrl.parse(BASE_URL).newBuilder();
@@ -282,11 +291,19 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                 .addQueryParameter("key", API_KEY);
 
 
-        String supermarketURL = urlBuilder.build().toString();
 
+
+        ObjectMapper mapper = new ObjectMapper();
+        /* As seen in the screenshots, some of the listed fields in the JSON response are not implemented in their
+            corresponding classes. The disable method below is used to force the mapper to ignore and skip these fields
+            when it cannot find the right object to map to, so that we can save time not having to create a plethora
+            of completely unecessary classes.
+         */
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
+        String supermarketURL = urlBuilder.build().toString();
         Request request = new Request.Builder()
                 .url(supermarketURL)
-                //.addHeader("X-Android-Package", )
                 .build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
@@ -296,7 +313,7 @@ public class HomeLocationFragment extends Fragment implements OnMapReadyCallback
                 String result = response.body().string();
                 PlacesAPIVessel chalice = mapper.readValue(result, PlacesAPIVessel.class);
                 ArrayList<Supermarket> marts = chalice.filter();
-                locationViewModel.setNearbyMarts(marts);
+                //locationViewModel.setNearbyMarts(marts);
             }
 
             public void onFailure(Call call, IOException e) {
