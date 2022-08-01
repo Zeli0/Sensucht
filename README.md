@@ -1,5 +1,6 @@
 # Sensucht
 
+Proposed Level: Vostok
 
 ## About
 
