@@ -1,7 +1,5 @@
 # Sensucht
 
-Proposed Level: Vostok
-
 ## About
 
 This is an Android application that recommends users recipes based on their meal budgets, leftover ingredients and kitchen appliances. The application is written entirely in Java, using the following libraries and APIs: Jackson, OkHTTPClient, Firebase, Google Maps API and Spoonacular API.
